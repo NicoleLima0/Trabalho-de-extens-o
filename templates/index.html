@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adote um amor</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><i class="fas fa-paw"></i></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#animais">Animais</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><i class="fas fa-paw"></i></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="animal-image">
+      <img src="{{ url_for('static', filename='image/fotopet.png') }}" alt="Foto de um animal" />
+    </div>
+    <div class="hero-content">
+      <h2>Adote um Amigo!</h2>
+      <p>
+        Adotar um animal é muito mais do que oferecer um lar, é acolher um
+        coração que só quer retribuir com amor incondicional. Cada patinha que
+        você resgata traz consigo uma nova chance de felicidade,
+        companheirismo e gratidão. Dê a eles o carinho que tanto merecem, e
+        eles irão transformar sua vida de maneiras que você nunca imaginou!
+      </p>
+      <button class="cta-btn" id="open-modal-btn">Cadastre os animais</button>
+    </div>
+  </section>
+  <section id="animais" class="animais">
+    <div class="container">
+      <h3>Conheça Nossos Animais</h3>
+      <div class="animal-card">
+        <img src="https://via.placeholder.com/300x200" alt="Animal 1" />
+        <h4>Nome do Animal</h4>
+        <p>Descrição breve do animal.</p>
+        <a href="#" class="cta-btn">Adote</a>
+      </div>
+      <div class="animal-card">
+        <img src="https://via.placeholder.com/300x200" alt="Animal 2" />
+        <h4>Nome do Animal</h4>
+        <p>Descrição breve do animal.</p>
+        <a href="#" class="cta-btn">Adote</a>
+      </div>
+    </div>
+  </section>
+  <section id="sobre" class="sobre">
+    <div class="container">
+      <h3>Sobre Nós</h3>
+      <p>
+        Somos uma ONG dedicada à adoção responsável de animais. Nossa missão é
+        encontrar lares amorosos para cães e gatos abandonados e promover a
+        conscientização sobre a adoção.
+      </p>
+    </div>
+  </section>
+
+  <div class="modal" id="animal-modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal-btn">&times;</span>
+      <h2>Cadastro de Animais</h2>
+      <form id="animal-form" method="POST" action="/cadastro">
+        <label for="name">Nome do Animal:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="species">Espécie:</label>
+        <input type="text" id="species" name="species" required />
+
+        <label for="age">Idade:</label>
+        <input type="text" id="age" name="age" required />
+
+        <label for="tel">Telefone para contato:</label>
+        <input type="number" id="tel" name="tel" required />
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Amigo Não Se Compra. Todos os direitos reservados.</p>
+  </footer>
+  <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
