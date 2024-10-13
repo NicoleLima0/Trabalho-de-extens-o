@@ -17,3 +17,29 @@ window.addEventListener("click", (event) => {
     modal.style.display = "none";
   }
 });
+
+document.querySelectorAll(".remove-animal-btn").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const animalCard = this.closest(".animal-card");
+    const animalName = animalCard.getAttribute("data-animal-name");
+    fetch(`/remover-animal`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: animalName }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          animalCard.remove();
+        } else {
+          alert("Erro ao remover o animal.");
+        }
+      })
+      .catch((error) => {
+        console.error("Erro:", error);
+        alert("Erro ao remover o animal.");
+      });
+  });
+});
